@@ -1,15 +1,21 @@
 ---
+title: "Lunar Engineering"
+description: "Mission statement: Provide applications that destroy barriers to learning. Provide individualized educational to all."
 layout: home
 search_exclude: true
 image: images/logo.png
 ---
 
-This site is built with [fastpages](https://github.com/fastai/fastpages), An easy to use blogging platform with extra features for Jupyter Notebooks.
+## Under Development
 
-![]({{site.baseurl}}/images/diagram.png "https://github.com/fastai/fastpages")
+### PAIRS Application
 
-[fastpages](https://github.com/fastai/fastpages) automates the process of creating blog posts via GitHub Actions, so you don't have to fuss with conversion scripts.  A full list of features can be found on [GitHub](https://github.com/fastai/fastpages).  
+A primary Gardener algorithm maintains embedding spaces and the data structures which provide efficient indexing and search into those spaces. A secondary Tutor algorithm, tailored to each Student, serves as an intermediary between the Gardener and Student.
+When Students request information the Gardener approximates the centroid of that Skill in Experience Space (one of the sets of embeddings.) The Gardener returns nearest neighbor samples deterministically from the Experience Space and stores those Experiences in a buffer.
+The Tutor then approximates the likelihood that each sample will improve the rate of information gain and skills acquisition and samples probabilistically from the set provided by the Gardener. These predictions are stored in a buffer and accessed by the Student.
+Students are asynchronously measured by registered Measurement Devices (stored in Measurement Space) and those measurement scores, along with the buffered Experiences and associated predictions are joined and placed into a training queue.
+That training queue is used to train the Tutor and is propagated back to the Gardener, which in turn prunes the Experience, Learner, and Measurement spaces to maximize the rate of skills acquisition across the population of Students.
 
-You can edit the `index.html` file to change this content.
+### Data Managers
 
-# Posts
+The data manager is a distributed adaptive information tree.
