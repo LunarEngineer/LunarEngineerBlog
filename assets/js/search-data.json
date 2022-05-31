@@ -14,6 +14,15 @@
     
   
     
+        ,"post2": {
+            "title": "Algorithms, Data Structures, And What the Hell Those Have to do with Learning",
+            "content": "Introduction . &quot;I&#39;d like to do something amazing.&quot; . That&#39;s not a very descriptive thing to say, but sometimes it&#39;s good enough to get you started. . What takes your dream from this half-assed idea of a mission statement to something tangible? How do you do that? . I guess one way you could do that would be to make a list of exact rules that you use every time to appropriately act in any situation. Then, you could follow these rules exactly. . Well, that&#39;s an algorithm. . math = &quot;dumb&quot; timeline = { &#39;age_of_mandated_retirement_withdrawal&#39;: 72, &#39;mandated withdrawal amount&#39;, &#39;tax bracket at that time&#39;, &#39;when sell lvnworth house (its income)&#39;, &#39;does selling house change income bracket&#39; } . Algorithm . An algorithm, according to Dasgupta and crew, is: . Precise, | Unambiguous | A few other things. | It&#39;s a step-by-step, paint-by-numbers, solution for the problem it&#39;s intended to solve and it normally uses math to lay out the solution. . But in order to be able to do you need to be able to talk about things in a really concrete way. You need to be able to speak about the world in precise and unambiguous ways. . In order to do that you create data structures. . Data Structure . Sets deep dive A data structure is a rigid framework for expressing how bits of information are stored and accessed. It&#39;s a way to represent an Item, or even a Set containing many Items. . I&#39;m going to make up a data structure now and I&#39;ll call it a Managed Information Forest. . Data structures - rigid framework for expressing how bits of information work with each other (e.g. list, or linked list) Learning - . Chat about algorithms and data structures and why they&#39;re generally important. Speak towards efficiency and mention tractibility. . Talk about data requirements of deep learners and how stochastic gradient descent requires tons of data. . Data Structures . A data structure is equatable to a se of formal rules for how I choose to define some thing. . Let&#39;s say that I want to close my eyes and imagine that I&#39;ve got a new friend Bob, who is the number 6. . Atomic Data Structures . bob = 6 . Because I say that Bob is the number 6 I completely define everything about Bob. I know what I&#39;m allowed to do with Bob. . Btw, Bob is an Integer. . print(f&quot;Bob is an {type(bob)}&quot;) # You could run this command to get a fascinating look into how Bob works. # help(bob) # You can think of dir as &#39;What can you do&#39;? print(f&quot;I have {len(dir(bob))} properties and methods&quot;) . Bob is an &lt;class &#39;int&#39;&gt; I have 71 properties and methods . I can add Bob to Bob or to Susan, who is also an integer. . susan = 14 bob + susan . 20 . bob + 100*bob . 606 . A data structure houses information (the value six) and all the tools to access or use the information (defines how to add, subtract, etc.) . An integer is a data structure, as well as being a data type. . Rabbit Hole : https://en.wikipedia.org/wiki/Integer_(computer_science) . Container Data Structures . Comes the time when we want to talk about a bunch of numbers together, generally collecting similar numbers together. . Basic container structures let us start examining things taken in relation to one another. . I can line everyone up by size, or shape, or cut of their jib. Whatever. . Container strucutres range from simple tuples and lists and dictionaries to more complex structures like B Trees. . Hash Table . Data Structures . Hash Table | Binary Tree | Red Black Trees | . Binary Tree . Hash Tables Binary Trees Red Black Trees . https://www.usenix.org/system/files/conference/atc16/atc16_paper-mitchell.pdf . https://cs.uwaterloo.ca/~kmsalem/courses/CS848W10/presentations/Eflov-BTree.pdf . https://edutechlearners.com/download/Introduction_to_algorithms-3rd%20Edition.pdf . https://www.cs.dartmouth.edu/~thc/ . https://medium.com/javarevisited/10-best-books-for-data-structure-and-algorithms-for-beginners-in-java-c-c-and-python-5e3d9b478eb1 .",
+            "url": "https://lunarengineer.github.io/LunarEngineerBlog/2022/01/09/AlgAndDataStructures.html",
+            "relUrl": "/2022/01/09/AlgAndDataStructures.html",
+            "date": " • Jan 9, 2022"
+        }
+        
+    
   
     
         ,"post3": {
@@ -44,6 +53,17 @@
   
 
   
+      ,"page2": {
+          "title": "Executive Summary",
+          "content": "Individualized educational assistance at scale is not feasible, especially for economically impoverished areas. . The goal of Lunar Engineering is to aid in transforming the educational industry by providing autonomous individualized educational assistance at scale. . This is achieved using an algorithm to build and maintain a tree data structure used to sample information from in order to maximize the rate of learner information gain and retention affected by intelligent sampling. This is used in a recommendation system. . In less technical terms, think of this like a Librarian, of sorts, that learns to anticipate which training material is most likely to help a learner master a topic. . Success in this project is marked by all learners being optimized for growth, measured via an educational framework. .",
+          "url": "https://lunarengineer.github.io/LunarEngineerBlog/exsum/",
+          "relUrl": "/exsum/",
+          "date": ""
+      }
+      
+  
+
+  
 
   
   
@@ -65,7 +85,7 @@
   
 
   
-      ,"page10": {
+      ,"page11": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://lunarengineer.github.io/LunarEngineerBlog/robots.txt",
