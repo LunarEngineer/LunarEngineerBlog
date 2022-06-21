@@ -7,7 +7,7 @@ toc: false
 branch: master
 comments: true
 categories: [blog, linux, operating systems]
-hide: false
+hide: true
 search_exclude: true
 nb_path: _notebooks/2022-02-26-InstallingLinux.ipynb
 layout: notebook
@@ -33,19 +33,15 @@ layout: notebook
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Which-operating-system-do-we-need-and-why?">Which operating system do we need and why?<a class="anchor-link" href="#Which-operating-system-do-we-need-and-why?"> </a></h2><p>We need Linux because:</p>
-<ol>
-<li><a href="https://www.google.com/search?q=why+do+developers+need+linux">Developing distributed applications which use Windows as a base is silly.</a></li>
-<li>Windows is great for daily driving or for gaming, but when it comes time to develop complex, distributed, applications it's generally a non-starter. <a href="https://docs.microsoft.com/en-us/windows/wsl/about">Windows Subsystem for Linux</a> is a thing <em>for a reason</em>.</li>
-<li>We're going to develop a highly available distributed system in a cloud computing environment and our development environment should ideally match the testing and deployment environment.</li>
-</ol>
+<h2 id="Which-operating-system-do-we-need-and-why?">Which operating system do we need and why?<a class="anchor-link" href="#Which-operating-system-do-we-need-and-why?"> </a></h2><p>We need Linux because <a href="https://www.google.com/search?q=why+do+developers+need+linux">developing distributed applications which use Windows as a base is silly.</a> Windows is great for daily driving or for gaming, but when it comes time to develop complex, distributed, applications it's generally more challenging. <a href="https://docs.microsoft.com/en-us/windows/wsl/about">Windows Subsystem for Linux</a> is a thing <em>for many reasons</em>.</p>
+<p>We're going to develop a highly available distributed system in a cloud computing environment and our development environment should ideally match the testing and deployment environment.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-do-we-get-this-up-and-running?">How do we get this up and running?<a class="anchor-link" href="#How-do-we-get-this-up-and-running?"> </a></h2><p>In this particular instance I have a home server that I need to get up and running again, anyways. I'm setting this up using Kubernetes and Terraform on Linux. This walks from <em>a bare metal system</em> to provisioning the operating system, installing the software, and validating that it all works.</p>
+<h2 id="How-are-we-actually-applying-this-learning?">How are we actually applying this learning?<a class="anchor-link" href="#How-are-we-actually-applying-this-learning?"> </a></h2><p>In this particular instance I have a home server that I need to get up and running again, anyways for various reasons. I'm setting this up using Kubernetes and Terraform on Linux. This walks from <em>a bare metal system</em> (already assembled, though, we're skipping that part) to provisioning the operating system, installing the software, and validating that it all works.</p>
 
 </div>
 </div>
@@ -53,16 +49,19 @@ layout: notebook
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Bare-Metal">Bare Metal<a class="anchor-link" href="#Bare-Metal"> </a></h2><p>You can build a linux system for yourself, or you get can a bare metal system provisioned in AWS, Azure, Google Cloud, Digital Ocean, or whatever cloud computing environment you want.</p>
-<p>I have a home server because I host games and media, and because I like to play around with computers.</p>
+<p>I have a home server because I host games and media, and because I like to play around with computers. My server isn't <em>absolutely</em> ridiculuous, but it's certainly not an average desktop.</p>
+<p>I'm going to be using this as a Kubernetes compute node and I'm splurging a bit and upgrading my homelab at the same time!</p>
+<p>I'm looking to purchase a good handful of low power compute nodes; here's what I chose and why.</p>
 <p>At this point the installation process is tailored towards having physical access to the system; your particular environment will dictate how much of this needs to be done.</p>
 <ol>
 <li>Go get a tool to write a disk image to a physical device. If you're using linux you should check out the documentation for the dd command and you should be aware of how to find the correct address to use if you're targeting a specific removable device. If you're using Windows go download something like <a href="https://www.balena.io/etcher/">balena etcher</a> to flash an image to a USB.</li>
 <li>Go download whichever particular linux flavor is your preference; I prefer Ubuntu Server LTS because it's familiar, it's widely distributed, has a more than reasonablly long maintenance period, and will work with everything we're going to throw at it.</li>
 <li>Flash the image you downloaded using whatever tooling you selected.</li>
-<li>Plug the removable usb device into the physical server.</li>
+<li>Plug the removable usb device into the physical server you want to get running.</li>
 <li>Turn the darn thing on.</li>
 <li>Go through the boot sequence.</li>
 <li>Clone down this repository.</li>
+<li>Use cloud-init to setup kubernetes nodes.</li>
 <li>Run the install script to install the software (k33)</li>
 </ol>
 <p>This is a <a href="https://assets.ubuntu.com/v1/f401c3f4-Ubuntu_Server_CLI_pro_tips_2020-04.pdf">good resource</a> for command line interface in a Linux environment.</p>
@@ -72,9 +71,8 @@ layout: notebook
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Walking through the install for Ubuntu is pretty easy; along the way you can sleect <em>snaps</em> which are pre-packaged chunks of software that are common like <em>microk8s</em> or <em>nextcloud</em> or <em>aws-cli</em>. These just help you hit the ground running in certain circumstances, like when you're deploying a new node to a private cloud.</p>
-<p>I personally ticked off <em>nextcloud</em>; it's a simple self-hosted cloud content management solution (think google suite).</p>
-<p>I did this because it sets up easy remote content sharing.</p>
+<p>Walking through the install for Ubuntu is pretty easy; along the way you can select <em>snaps</em> which are pre-packaged chunks of software that are common like <em>microk8s</em> or <em>nextcloud</em> or <em>aws-cli</em>. These just help you hit the ground running in certain circumstances, like when you're deploying a new node to a private cloud, or you're just testing something out.</p>
+<p>I think I'd like to explore one of the open source solutions like nextcloud, but that's a story for another day.</p>
 
 </div>
 </div>
@@ -84,17 +82,8 @@ layout: notebook
 <p>Immediately after install you're going to want to do one thing via either automation or by hand; you'll need to generate an SSH key.</p>
 <div class="highlight"><pre><span></span>$ ssh-keygen -t ed25519 -C <span class="s2">&quot;your_email@example.com&quot;</span>
 </pre></div>
-<p>This will come in handy for a variety of things; cheif amongst them is hooking this up to github so that your server can clone private repositories.</p>
+<p>This will come in handy for a variety of things; chief amongst them is hooking this up to github so that your server can clone private repositories.</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>I set up nextcloud</p>
-<p><a href="https://docs.nextcloud.com/server/latest/admin_manual/installation/">https://docs.nextcloud.com/server/latest/admin_manual/installation/</a></p>
-<p>sudo snap install nextcloud</p>
-<h1 id="Enable-UFW-by-write-out-UFW-app">Enable UFW by write out UFW app<a class="anchor-link" href="#Enable-UFW-by-write-out-UFW-app"> </a></h1>
 </div>
 </div>
 </div>

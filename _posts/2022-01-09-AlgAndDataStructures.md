@@ -1,6 +1,14 @@
 ---
 keywords: fastai
+description: Parsimony - extreme unwillingness to spend money or use resources.
 title: Algorithms, Data Structures, And What the Hell Those Have to do with Learning
+sticky_rank: 2
+toc: true
+branch: master
+comments: true
+categories: [distributed computation, pyarrow, numpy]
+hide: true
+search_exclude: true
 nb_path: _notebooks/2022-01-09-AlgAndDataStructures.ipynb
 layout: notebook
 ---
